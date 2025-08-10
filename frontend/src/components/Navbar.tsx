@@ -18,9 +18,9 @@ const Navbar = () => {
           className="flex items-center gap-2.5 hover:opacity-90 transition-all group"
         >
           <div className="size-9 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition">
-            <MessageSquare className="w-5 h-5 text-primary" />
+            <img src="/chat-logo.png" alt="" />
           </div>
-          <h1 className="text-lg font-bold tracking-tight">Yap</h1>
+          <h1 className="text-lg font-bold tracking-tight">Ripple</h1>
         </Link>
 
         {/* Right Menu */}
