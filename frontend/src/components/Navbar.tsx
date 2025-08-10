@@ -37,13 +37,50 @@ const Navbar = () => {
                 <span className="hidden sm:inline">Profile</span>
               </Link>
 
-              <button
-                onClick={logout}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full hover:bg-error/10 text-error transition-colors"
+              <Link
+                to="/settings"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full hover:bg-primary/10 transition-colors"
               >
-                <LogOut className="w-4 h-4" />
-                <span className="hidden sm:inline">Logout</span>
-              </button>
+                <Settings className="w-4 h-4" />
+                <span className="hidden sm:inline">Settings</span>
+              </Link>
+
+              <div className="relative">
+                <button
+                  onClick={() =>
+                    (
+                      document.getElementById(
+                        "logout-dialog"
+                      ) as HTMLDialogElement
+                    )?.showModal()
+                  }
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-full hover:bg-error/10 text-error transition-colors"
+                >
+                  <LogOut className="w-4 h-4" />
+                  <span className="hidden sm:inline">Logout</span>
+                </button>
+
+                <dialog
+                  id="logout-dialog"
+                  className="modal modal-bottom sm:modal-middle"
+                >
+                  <div className="modal-box">
+                    <h3 className="font-bold text-lg">Confirm Logout</h3>
+                    <p className="py-4">Are you sure you want to logout?</p>
+                    <div className="modal-action">
+                      <form method="dialog" className="flex gap-2">
+                        <button className="btn btn-outline">Cancel</button>
+                        <button
+                          className="btn btn-error"
+                          onClick={() => logout()}
+                        >
+                          Logout
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </dialog>
+              </div>
             </>
           )}
         </div>

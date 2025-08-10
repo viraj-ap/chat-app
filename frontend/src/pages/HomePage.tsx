@@ -1,22 +1,25 @@
-import { useAuthStore } from "@/store/useAuthStore";
-import { Loader} from "lucide-react";
-import { useEffect } from "react";
+import ChatContainer from "@/components/ChatContainer";
+import NoChatSelected from "@/components/NoChatSelected";
+import Sidebar from "@/components/Sidebar";
+import { useChatStore } from "../store/useChatStore";
+
 
 const HomePage = () => {
-  const { authUser, checkAuth, isCheckingAuth } = useAuthStore() as {
-    authUser: any;
-    isCheckingAuth: any;
-    checkAuth: () => void;
-  };
-  useEffect(() => {
-    checkAuth();
-  }, [authUser]);
+  //@ts-ignore
+  const { selectedUser } = useChatStore();
 
-  if (isCheckingAuth && !authUser) {
-    return <Loader className="animate-spin size-10" />;
-  }
+  return (
+    <div className="h-screen bg-base-200">
+      <div className="flex items-center justify-center pt-20 px-4">
+        <div className="bg-base-100 rounded-lg shadow-cl w-full max-w-6xl h-[calc(100vh-8rem)]">
+          <div className="flex h-full rounded-lg overflow-hidden">
+            <Sidebar />
 
-  return <div>home page</div>;
+            {!selectedUser ? <NoChatSelected /> : <ChatContainer />}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
-
 export default HomePage;
