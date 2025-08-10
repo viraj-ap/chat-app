@@ -111,3 +111,4 @@ export const useChatStore = create<ChatStore>((set, get) => ({
 
   setSelectedUser: (selectedUser) => set({ selectedUser }),
 }));
+ 
